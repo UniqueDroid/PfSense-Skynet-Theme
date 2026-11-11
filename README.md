@@ -1,81 +1,95 @@
 # PfSense-Skynet-Theme
 
-Dunkles Theme für die pfSense-Weboberfläche im SkyNet-Stil – Farben, Schrift und
-Bausteine stammen aus der Oberfläche von [ShareOS](https://github.com/UniqueDroid/ShareOS)
-(abgeleitet vom Skynet-Intranet): Blau auf fast Schwarz, Monospace-Schrift,
-feine Scanlines, leuchtende Akzente.
+A dark theme for the pfSense web interface in the SkyNet style. Colours, font and
+building blocks come from the [ShareOS](https://github.com/UniqueDroid/ShareOS) interface
+(derived from the Skynet intranet): blue on near-black, monospace type, fine scan lines
+and glowing accents.
 
-![Vorschau SkyNet (blau)](docs/preview-blue.png)
+![Preview of SkyNet (blue)](docs/preview-blue.png)
 
-Die Vorschaubilder zeigen einen Nachbau der pfSense-Seitenstruktur, keine echte Firewall.
+The preview images show a rebuild of the pfSense page structure, not a real firewall.
 
-## Varianten
+## Variants
 
-| Datei | Theme-Name in pfSense | Akzent |
+| File | Theme name in pfSense | Accent |
 |---|---|---|
-| `css/SkyNet.css` | SkyNet | Blau (Standard) |
-| `css/SkyNet-Green.css` | SkyNet-Green | Grün |
-| `css/SkyNet-Red.css` | SkyNet-Red | Rot |
-| `css/SkyNet-White.css` | SkyNet-White | Weiß |
+| `css/SkyNet.css` | SkyNet | Blue (default) |
+| `css/SkyNet-Green.css` | SkyNet-Green | Green |
+| `css/SkyNet-Red.css` | SkyNet-Red | Red |
+| `css/SkyNet-White.css` | SkyNet-White | White |
 
-## Installation ohne SSH
+## Installation without SSH
 
-In pfSense **Diagnostics → Command Prompt** öffnen und unter *Execute Shell Command*
-diese Zeile ausführen:
+In pfSense, open **Diagnostics → Command Prompt** and run this line under
+*Execute Shell Command*:
 
 ```sh
 fetch -qo - https://raw.githubusercontent.com/UniqueDroid/PfSense-Skynet-Theme/main/install.sh | sh
 ```
 
-Das Skript lädt die vier CSS-Dateien nach `/usr/local/www/css/` und ändert sonst nichts.
+The script downloads the four CSS files to `/usr/local/www/css/` and changes nothing else.
 
-Danach das Theme auswählen: **System → General Setup → webConfigurator → Theme → SkyNet**, speichern.
+Then select the theme: **System → General Setup → webConfigurator → Theme → SkyNet**, and save.
 
-Wer kein Skript aus dem Netz ausführen möchte, lädt nur die gewünschte Datei direkt:
+If you would rather not run a script from the network, download only the file you want:
 
 ```sh
 fetch -o /usr/local/www/css/SkyNet.css https://raw.githubusercontent.com/UniqueDroid/PfSense-Skynet-Theme/main/css/SkyNet.css
 ```
 
-Ohne Internetzugang der Firewall: CSS-Datei im selben Dialog unter *Upload File* hochladen
-(landet in `/tmp`) und dann verschieben:
+If the firewall has no internet access: upload the CSS file in the same dialog under
+*Upload File* (it lands in `/tmp`) and move it:
 
 ```sh
 mv /tmp/SkyNet.css /usr/local/www/css/SkyNet.css
 ```
 
-## Aktualisieren und Entfernen
+## Updating and removing
 
-Aktualisieren: die Installationszeile erneut ausführen, danach die Seite mit Strg+F5 neu laden.
+To update, run the installation line again, then reload the page with Ctrl+F5.
 
-Entfernen:
+To remove:
 
 ```sh
 fetch -qo - https://raw.githubusercontent.com/UniqueDroid/PfSense-Skynet-Theme/main/install.sh | sh -s -- uninstall
 ```
 
-Ist ein entferntes Theme noch ausgewählt, zeigt pfSense wieder das Standard-Theme.
+If a removed theme is still selected, pfSense shows its default theme again.
 
-## Gut zu wissen
+## Is it safe?
 
-- Ein pfSense-Update kann eigene Dateien in `/usr/local/www/css/` entfernen. Dann einfach
-  die Installationszeile erneut ausführen – die Theme-Auswahl bleibt in der Konfiguration erhalten.
-- Die Anmeldeseite hat ein eigenes Stylesheet und wird von Themes nicht verändert
-  (Farbe dort: *System → General Setup → Login page color*).
-- Die Schrift ist JetBrains Mono, wenn sie auf dem Rechner installiert ist, sonst die
-  Monospace-Schrift des Systems. Es wird nichts aus dem Internet nachgeladen.
-- Das Theme setzt auf `pfSense.css` der Firewall auf (`@import`) und überschreibt nur Farben,
-  Schrift und Formen – Layout und Funktionen bleiben unverändert.
+The theme is CSS only. It changes how the web interface looks and nothing about how the
+firewall works: rules, routing, VPN, DNS and the configuration are not touched, and no
+existing pfSense file is overwritten. The worst case is a page that looks wrong.
 
-## Anpassen
+Ways back:
 
-Die Dateien in `css/` werden erzeugt. Regeln stehen in `src/base.css`, die Farben der
-Varianten in `build.sh`:
+1. Select the theme *pfSense* again under System → General Setup.
+2. Run `rm /usr/local/www/css/SkyNet*.css` under Diagnostics → Command Prompt. When the
+   file is missing, pfSense uses its default theme.
+3. If the web interface cannot be used at all, run the same `rm` command on the console
+   (menu item 8, Shell).
+
+## Good to know
+
+- A pfSense update can remove custom files from `/usr/local/www/css/`. Run the installation
+  line again; the theme selection is kept in the configuration.
+- The login page has its own stylesheet and is not changed by themes
+  (its colour: *System → General Setup → Login page color*).
+- The font is JetBrains Mono if it is installed on your computer, otherwise the system's
+  monospace font. Nothing is loaded from the internet.
+- The theme builds on the firewall's own `pfSense.css` (`@import`) and only overrides
+  colours, type and shapes. Layout and functions stay as they are.
+
+## Customising
+
+The files in `css/` are generated. The rules live in `src/base.css`, the colours of the
+variants in `build.sh`:
 
 ```sh
 sh build.sh
 ```
 
-## Lizenz
+## License
 
-GPL-2.0, siehe [LICENSE](LICENSE).
+GPL-2.0, see [LICENSE](LICENSE).
