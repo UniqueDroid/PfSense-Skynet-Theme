@@ -1010,3 +1010,34 @@ g.nv-axis text, g.nv-legend text {
     background-color: var(--sky-ph);
     border-bottom: 1px solid var(--sky-line);
 }
+
+/* ---------- Dashboard widgets ---------- */
+
+/* The heading icons float right and are taller than the heading text; without
+   this they reach into the widget body and make its content narrower. */
+.panel-heading::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.panel-body, .panel-footer {
+    clear: both;
+}
+
+.panel-title {
+    line-height: 20px;
+}
+
+.widget-heading-icon {
+    line-height: 20px;
+}
+
+.widget-heading-icon a {
+    margin-left: 6px;
+}
+
+.widget-heading-icon i.fa-solid, .widget-heading-icon i.fa-regular, .widget-heading-icon i.fa-brands {
+    font-size: 15px;
+    vertical-align: middle;
+}
