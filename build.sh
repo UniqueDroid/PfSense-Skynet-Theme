@@ -20,7 +20,12 @@ emit() { # name, label, variables
 	echo "built $out"
 }
 
-emit SkyNet "green" \
+emit SkyNet "blue" \
+'    --sky-bg: #06090d; --sky-panel: #0b111a; --sky-ph: #0e1726; --sky-line: #15253b;
+    --sky-accent: #3da5ff; --sky-soft: #2b8ad9; --sky-dim: #1d4f80; --sky-rgb: 61, 165, 255;
+    --sky-text: #c6dff5; --sky-muted: #6f90ad;'
+
+emit SkyNet-Green "green" \
 '    --sky-bg: #070b08; --sky-panel: #0c140f; --sky-ph: #0f1d14; --sky-line: #163323;
     --sky-accent: #3dff8a; --sky-soft: #2bcf6c; --sky-dim: #1d6e3e; --sky-rgb: 61, 255, 138;
     --sky-text: #b8f5cf; --sky-muted: #6aa883;'
@@ -29,11 +34,6 @@ emit SkyNet-Red "red" \
 '    --sky-bg: #0b0707; --sky-panel: #140c0d; --sky-ph: #1d0f11; --sky-line: #351719;
     --sky-accent: #ff4d5e; --sky-soft: #e03a4b; --sky-dim: #7a2029; --sky-rgb: 255, 77, 94;
     --sky-text: #f5c8cc; --sky-muted: #a87074;'
-
-emit SkyNet-Blue "blue" \
-'    --sky-bg: #06090d; --sky-panel: #0b111a; --sky-ph: #0e1726; --sky-line: #15253b;
-    --sky-accent: #3da5ff; --sky-soft: #2b8ad9; --sky-dim: #1d4f80; --sky-rgb: 61, 165, 255;
-    --sky-text: #c6dff5; --sky-muted: #6f90ad;'
 
 emit SkyNet-White "white" \
 '    --sky-bg: #08090a; --sky-panel: #101214; --sky-ph: #16191c; --sky-line: #262a2e;

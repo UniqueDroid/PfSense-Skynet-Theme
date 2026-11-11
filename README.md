@@ -2,10 +2,10 @@
 
 Dunkles Theme für die pfSense-Weboberfläche im SkyNet-Stil – Farben, Schrift und
 Bausteine stammen aus der Oberfläche von [ShareOS](https://github.com/UniqueDroid/ShareOS)
-(abgeleitet vom Skynet-Intranet): Terminal-Grün auf fast Schwarz, Monospace-Schrift,
+(abgeleitet vom Skynet-Intranet): Blau auf fast Schwarz, Monospace-Schrift,
 feine Scanlines, leuchtende Akzente.
 
-![Vorschau SkyNet (grün)](docs/preview-green.png)
+![Vorschau SkyNet (blau)](docs/preview-blue.png)
 
 Die Vorschaubilder zeigen einen Nachbau der pfSense-Seitenstruktur, keine echte Firewall.
 
@@ -13,9 +13,9 @@ Die Vorschaubilder zeigen einen Nachbau der pfSense-Seitenstruktur, keine echte 
 
 | Datei | Theme-Name in pfSense | Akzent |
 |---|---|---|
-| `css/SkyNet.css` | SkyNet | Grün |
+| `css/SkyNet.css` | SkyNet | Blau (Standard) |
+| `css/SkyNet-Green.css` | SkyNet-Green | Grün |
 | `css/SkyNet-Red.css` | SkyNet-Red | Rot |
-| `css/SkyNet-Blue.css` | SkyNet-Blue | Blau |
 | `css/SkyNet-White.css` | SkyNet-White | Weiß |
 
 ## Installation ohne SSH

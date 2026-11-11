@@ -11,7 +11,8 @@
 
 BASE="${SKYNET_BASE:-https://raw.githubusercontent.com/UniqueDroid/PfSense-Skynet-Theme/main/css}"
 DEST="${SKYNET_DEST:-/usr/local/www/css}"
-FILES="SkyNet SkyNet-Red SkyNet-Blue SkyNet-White"
+FILES="SkyNet SkyNet-Green SkyNet-Red SkyNet-White"
+OLD="SkyNet-Blue" # former names, removed on install and uninstall
 
 if [ ! -d "$DEST" ]; then
 	echo "ERROR: $DEST not found – is this a pfSense box?"
@@ -19,7 +20,7 @@ if [ ! -d "$DEST" ]; then
 fi
 
 if [ "${1:-install}" = "uninstall" ]; then
-	for f in $FILES; do
+	for f in $FILES $OLD; do
 		if [ -f "$DEST/$f.css" ]; then
 			rm -f "$DEST/$f.css" && echo "removed  $DEST/$f.css"
 		fi
@@ -41,6 +42,11 @@ for f in $FILES; do
 done
 
 if [ "$fail" = 0 ]; then
+	for f in $OLD; do
+		if [ -f "$DEST/$f.css" ]; then
+			rm -f "$DEST/$f.css" && echo "removed  $DEST/$f.css (now: SkyNet)"
+		fi
+	done
 	echo "Done. Select the theme: System > General Setup > webConfigurator > Theme > SkyNet"
 fi
 exit $fail
